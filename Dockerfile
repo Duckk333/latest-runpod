@@ -80,7 +80,7 @@ RUN if [ "$MODEL_TYPE" = "sdxl" ]; then \
       wget -O models/clip/t5xxl_fp8_e4m3fn.safetensors https://huggingface.co/comfyanonymous/flux_text_encoders/resolve/main/t5xxl_fp8_e4m3fn.safetensors && \
       wget -O models/vae/ae.safetensors https://huggingface.co/black-forest-labs/FLUX.1-schnell/resolve/main/ae.safetensors; \
     elif [ "$MODEL_TYPE" = "flux1-dev" ]; then \
-      wget --header="Authorization: Bearer ${HUGGINGFACE_ACCESS_TOKEN}" -O models/checkpoints/flux1-dev.safetensors https://huggingface.co/black-forest-labs/FLUX.1-dev/resolve/main/flux1-dev.safetensors && \
+      wget --header="Authorization: Bearer ${HUGGINGFACE_ACCESS_TOKEN}" -O models/unet/flux1-dev.safetensors https://huggingface.co/black-forest-labs/FLUX.1-dev/resolve/main/flux1-dev.safetensors && \
       wget -O models/clip/clip_l.safetensors https://huggingface.co/comfyanonymous/flux_text_encoders/resolve/main/clip_l.safetensors && \
       wget -O models/clip/t5xxl_fp8_e4m3fn.safetensors https://huggingface.co/comfyanonymous/flux_text_encoders/resolve/main/t5xxl_fp8_e4m3fn.safetensors && \
       wget --header="Authorization: Bearer ${HUGGINGFACE_ACCESS_TOKEN}" -O models/vae/ae.safetensors https://huggingface.co/black-forest-labs/FLUX.1-dev/resolve/main/ae.safetensors; \
@@ -92,7 +92,9 @@ RUN wget -O models/pulid/ip-adapter_pulid_sdxl_fp16.safetensors https://huggingf
     wget -O models/loras/Eldritch_ComicsXL.safetensors "https://civitai.com/api/download/models/305491?token=${CIVITAI_API_KEY}" && \
     wget -O models/controlnet/controlnet-depth-sdxl-1.0.safetensors https://huggingface.co/diffusers/controlnet-depth-sdxl-1.0/resolve/main/diffusion_pytorch_model.fp16.safetensors && \
     wget -O models/checkpoints/DreamShaperXL-fp16.safetensors "https://civitai.com/api/download/models/351306?token=${CIVITAI_API_KEY}" && \
+    wget -O models/checkpoints/flux-dev-fp8.safetensors https://huggingface.co/XLabs-AI/flux-dev-fp8/resolve/main/flux-dev-fp8.safetensors && \
     wget -O models/depthanything/depth_anything_v2_vitl_fp16.safetensors https://huggingface.co/Kijai/DepthAnythingV2-safetensors/resolve/main/depth_anything_v2_vitl_fp16.safetensors
+    
 
 # Stage 3: Final image
 FROM base as final
